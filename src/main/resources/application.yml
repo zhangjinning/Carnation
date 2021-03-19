@@ -1,2 +1,14 @@
 server:
   port: 9779
+spring:
+  mail:
+    host: smtp.126.com
+    username: zjnblank@126.com
+    password: RGJOQKSGXRUDDFTA
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
