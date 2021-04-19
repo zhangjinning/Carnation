@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="common/head::common_header(~{::title})">
+        <title>zjnblank</title>
+    </th:block>
+    <link rel="stylesheet" th:href="@{/css/editormd.min.css}" type="text/css">
+</head>
+<body>
+<th:block th:replace="common/nav::common_nav"/>
+<div class="common_wrapper">
+    <div class="main" style="margin: 0 auto;max-width: 58em;">
+        <div class="row" style="margin-left: 2px;margin-right: 2px;">
+            <div class="col-md-4 order-md-2">
+                <div style="box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28) !important;padding: .5em 0;border-color: rgba(223,225,229,0);border-radius: 8px;margin-top: 1.5em;">
+                    <div class="anchor" style="margin-left: 1.5em;">
+                        coding...
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 order-md-1">
+                <div style="box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28) !important;padding: .5em 0;border-color: rgba(223,225,229,0);border-radius: 8px;margin-top: 1.5em;">
+                    <div class="editormd-preview-theme-dark" id="article-content">
+                        <textarea style="display:none;" th:text="${item.content}"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<th:block th:replace="common/foot::common_foot"/>
+<th:block th:include="common/script::common_js"/>
+<script th:src="@{/editormd/lib/marked.min.js}"></script>
+<script th:src="@{/editormd/lib/prettify.min.js}"></script>
+<script th:src="@{/editormd/lib/raphael.min.js}"></script>
+<script th:src="@{/editormd/lib/underscore.min.js}"></script>
+<script th:src="@{/editormd/lib/sequence-diagram.min.js}"></script>
+<script th:src="@{/editormd/lib/flowchart.min.js}"></script>
+<script th:src="@{/editormd/lib/jquery.flowchart.min.js}"></script>
+<script th:src="@{/js/editormd.min.js}"></script>
+<script>
+    var editor;
+    $(function(){
+        editor = editormd.markdownToHTML("article-content",{
+            htmlDecode:"style,script,iframe",
+            emoji:true,
+            taskList:true,
+            tex:true,
+            flowChart:true,
+            sequenceDiagram:true,
+            codeFold:true,
+        });
+    });
+
+
+
+</script>
+</body>
+</html>

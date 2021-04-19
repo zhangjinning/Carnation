@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="common/head::common_header(~{::title})">
+        <title>zjnblank</title>
+    </th:block>
+</head>
+<body>
+<th:block th:replace="common/nav::common_nav"/>
+<div class="common_wrapper">
+    <th:block th:each="item, itStat : ${items}">
+        <div class="main" style="margin: 0 auto;max-width: 42em;">
+            <div style="box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28) !important;margin: 2em 1em;padding: .5em 0;border-color: rgba(223,225,229,0);border-radius: 8px;">
+                <div style="margin-left: 1.5em;">
+                    <h3 th:text="${item.title}">item</h3>
+                    <div style="color: #6c757d !important;" th:text="${item.createDate}"></div>
+                    <p></p>
+                    <a th:href="@{'/content/article/detail/' + ${item.id}}">点击阅读</a>
+                </div>
+            </div>
+        </div>
+    </th:block>
+</div>
+<th:block th:replace="common/foot::common_foot"/>
+<th:block th:include="common/script::common_js"/>
+</body>
+</html>

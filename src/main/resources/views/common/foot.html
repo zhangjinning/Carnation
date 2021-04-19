@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<footer class="bg-dark" style="color: rgba(255, 255, 255, 0.55);width: 100%;display: flex;justify-content: center;
+        padding-top: .5em;padding-bottom: .5em;bottom: 0;position: absolute;"
+        th:fragment="common_foot">
+    <div class="inner">
+        <span>&copy; 2017-2021 zjnblank.top, </span>
+        <span><a href="http://www.miibeian.gov.cn/"
+                 style="color: rgba(255, 255, 255, 0.55);">, </a></span>
+        <span>
+            <img alt="" src="../../static/assets/images/beian.png" th:src="@{/assets/images/beian.png}">
+            <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44051102000402"
+               style="color: rgba(255, 255, 255, 0.55);"></a>
+        </span>
+    </div>
+</footer>
+</html>
