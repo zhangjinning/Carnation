@@ -1,13 +1,12 @@
 package top.zjnblank.Carnation.controller.admin;
 
+import cn.hutool.core.util.IdUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import top.zjnblank.Carnation.dao.ArticleRepository;
 import top.zjnblank.Carnation.entity.TbArticle;
-
-import java.util.UUID;
 
 @RestController("AdminArticleController")
 @RequestMapping("/admin/article")
@@ -21,12 +20,12 @@ public class ArticleController {
     }
 
     @PostMapping(value = "/publish")
-    public ModelAndView publish(@RequestParam(value = "text") String content) {
+    public void publishApi(@RequestParam(value = "text") String content,
+                                   @RequestParam(value = "title") String title) {
         TbArticle article = new TbArticle();
         article.setContent(content);
-        article.setTitle("");
-        article.setId(UUID.randomUUID().toString().replaceAll("-", ""));
+        article.setTitle(title);
+        article.setId(IdUtil.simpleUUID());
         articleRepository.save(article);
-        return new ModelAndView("/article/publish");
     }
 }

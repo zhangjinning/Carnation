@@ -20,6 +20,7 @@ dependencies {
     implementation 'com.alibaba:druid:1.2.5'
     implementation 'mysql:mysql-connector-java:8.0.23'
     implementation 'cn.hutool:hutool-all:5.6.3'
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-java8time:3.0.4.RELEASE'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'

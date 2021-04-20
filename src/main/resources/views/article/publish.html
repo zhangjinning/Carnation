@@ -15,6 +15,7 @@
         <textarea id="my-editormd-html-code" name="text" style="display:none;"></textarea>
     </div>
     <div class="pub_main">
+        <input id="title" type="text">
         <input id="publish" onclick="doSubmit();" type="button" value="发布">
     </div>
 </div>
@@ -35,15 +36,17 @@
 
     function doSubmit() {
         var content = $("#my-editormd-html-code").text();
+        var title = $("#title").val();
         if (content.length < 1 || content === '' || content === undefined) {
             console.log(content);
             return
         } else {
             $.ajax({
                 type: 'POST',
-                url: '/content/article/publish',
+                url: '/admin/article/publish',
                 data: {
-                    text: content
+                    text: content,
+                    title: title
                 },
                 success: function() {
                     window.location.href = '/article/publish';
