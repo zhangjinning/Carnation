@@ -31,3 +31,8 @@
     min-height: 100%;
     position: relative;
 }
+
+.pub_main {
+    width: 90%;
+    margin: 0 auto;
+}

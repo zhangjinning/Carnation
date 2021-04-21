@@ -15,8 +15,10 @@
         <textarea id="my-editormd-html-code" name="text" style="display:none;"></textarea>
     </div>
     <div class="pub_main">
-        <input id="title" type="text">
-        <input id="publish" onclick="doSubmit();" type="button" value="发布">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Article title" aria-label="Article title" aria-describedby="button-addon2" id="title">
+            <button class="btn btn-primary" type="button" id="button-addon2" onclick="doSubmit();">Submit</button>
+        </div>
     </div>
 </div>
 <th:block th:include="common/script::common_js"/>
@@ -49,7 +51,7 @@
                     title: title
                 },
                 success: function () {
-                    window.location.href = '/article/publish';
+                    window.location.href = '/content/article/';
                 }
             });
         }
