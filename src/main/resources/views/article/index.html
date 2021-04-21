@@ -13,7 +13,8 @@
             <div style="box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28) !important;margin: 2em 1em;padding: .5em 0;border-color: rgba(223,225,229,0);border-radius: 8px;">
                 <div style="margin-left: 1.5em;">
                     <h3 th:text="${item.title}">item</h3>
-                    <div style="color: #6c757d !important;" th:text="${#temporals.format(item.createDate, 'yyyy-MM-dd HH:mm:ss')}"></div>
+                    <div style="color: #6c757d !important;"
+                         th:text="${#temporals.format(item.createDate, 'yyyy-MM-dd HH:mm:ss')}"></div>
                     <p></p>
                     <a th:href="@{'/content/article/detail/' + ${item.id}}">点击阅读</a>
                 </div>

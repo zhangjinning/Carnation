@@ -21,7 +21,7 @@ public class ArticleController {
 
     @PostMapping(value = "/publish")
     public void publishApi(@RequestParam(value = "text") String content,
-                                   @RequestParam(value = "title") String title) {
+                           @RequestParam(value = "title") String title) {
         TbArticle article = new TbArticle();
         article.setContent(content);
         article.setTitle(title);

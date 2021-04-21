@@ -33,7 +33,7 @@
             token: function (stream, state) {
                 if (stream)
 
-                //check for state changes
+                    //check for state changes
                     if (!state.inString && !state.inComment && ((stream.peek() == '"') || (stream.peek() == "'"))) {
                         state.stringType = stream.peek();
                         stream.next(); // Skip quote
