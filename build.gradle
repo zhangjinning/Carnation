@@ -1,12 +1,29 @@
+buildscript {
+    ext {
+        springBootVersion = '2.4.3'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath('org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}')
+        classpath('se.transmode.gradle:gradle-docker:1.2')
+    }
+}
+
 plugins {
     id 'org.springframework.boot' version '2.4.3'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
 }
 
+apply plugin: 'application'
+apply plugin: 'docker'
+
 group = 'top.zjnblank'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
 
 repositories {
     mavenCentral()
@@ -28,4 +45,45 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+jar {
+    baseName 'carnation-alpha'
+    version '0.1'
+}
+
+bootJar {
+    project.group = 'top.zjnblank'
+    baseName('carnation-alpha')
+    version('0.1')
+}
+
+distDocker {
+    baseImage 'openjdk:8'
+    maintainer 'aning'
+}
+
+//docker {
+//    baseImage = 'openjdk'
+//    maintainer = 'aning'
+//    useApi = true
+//    hostUrl = 'https://127.0.0.1:2374'
+//    apiUsername = 'user'
+//    apiPassword = 'pwd'
+//    apiEmail = 'aning@zjnblank.top'
+//}
+
+task dockerBuilder(type: Docker) {
+    applicationName = jar.baseName
+    tagVersion = jar.version
+//    addFile("${jar.baseName}-${jar.version}.jar", "run.jar")
+//    entryPoint(["java", "-jar", "run.jar"])
+//    exposePort(9779)
+    dockerfile = file('Dockerfile')
+    doFirst {
+        copy {
+            from jar
+            into stageDir
+        }
+    }
 }
