@@ -13,6 +13,6 @@ public class IndexController {
 
     @GetMapping("/")
     public void index(HttpServletResponse response) throws IOException {
-        response.sendRedirect("/content/article/");
+        response.sendRedirect("content/article/");
     }
 }

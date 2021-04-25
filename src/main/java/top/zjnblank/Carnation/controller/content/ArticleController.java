@@ -23,12 +23,12 @@ public class ArticleController {
     @GetMapping(value = "/")
     public ModelAndView index(@PageableDefault Pageable pageable) {
         Page<TbArticle> page = articleRepository.findAll(pageable);
-        return new ModelAndView("/article/index", "items", page.getContent());
+        return new ModelAndView("article/index", "items", page.getContent());
     }
 
     @GetMapping(value = "/detail/{id}")
     public ModelAndView showDetail(@PathVariable String id) {
         TbArticle article = articleRepository.findById(id).orElse(null);
-        return new ModelAndView("/article/detail", "item", article);
+        return new ModelAndView("article/detail", "item", article);
     }
 }

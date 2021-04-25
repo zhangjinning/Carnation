@@ -16,7 +16,7 @@ public class ArticleController {
 
     @GetMapping(value = "/publish")
     public ModelAndView publishView() {
-        return new ModelAndView("/article/publish");
+        return new ModelAndView("article/publish");
     }
 
     @PostMapping(value = "/publish")
